@@ -6,7 +6,32 @@
         xmlns:local="clr-namespace:ChanCountryFlags"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+    <Grid Margin="12">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="64" />
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <ComboBox ItemsSource="{Binding FlagBoards}"
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="Name"
+                  ItemStringFormat="{}/{0}/" 
+                  IsReadOnly="True"
+                  Text="Board...">
+            <ComboBox.Resources>
+                <Style TargetType="ComboBox">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SelectedItem}" Value="{x:Null}">
+                            <Setter Property="SelectedIndex" Value="0" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ComboBox.Resources>
+        </ComboBox>
     </Grid>
 </Window>
