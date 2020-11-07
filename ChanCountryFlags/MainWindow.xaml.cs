@@ -23,6 +23,7 @@ namespace ChanCountryFlags
     public partial class MainWindow : Window
     {
         public IEnumerable<Board> FlagBoards { get; private set; }
+        public IEnumerable<Country> Countries { get; private set; }
 
         public MainWindow()
         {
@@ -32,10 +33,11 @@ namespace ChanCountryFlags
             var boards = JsonConvert.DeserializeObject<Boards>(boardsJson);
 
             FlagBoards = boards.GetFlagBoards();
+            Countries = CountryCache.GetAllCountries();
 
             var catalogJson = System.IO.File.ReadAllText("Resources/catalog.json");
             var catalog = JsonConvert.DeserializeObject<CatalogPage[]>(catalogJson, CatalogConverter.Settings);
-
+            
             DataContext = this;
         }
     }
