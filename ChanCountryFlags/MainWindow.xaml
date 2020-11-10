@@ -15,16 +15,28 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="22" />
+            <RowDefinition Height="22" />
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
+        <ComboBox ItemsSource="{Binding Countries}" Grid.Row="0" Grid.ColumnSpan="2">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Icon}" RenderOptions.BitmapScalingMode="NearestNeighbor" Margin="0,0,4,0"/>
+                        <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <ComboBox ItemsSource="{Binding FlagBoards}"
                   DisplayMemberPath="Name"
                   SelectedValuePath="Name"
                   ItemStringFormat="{}/{0}/" 
                   IsReadOnly="True"
                   Text="Board..."
-                  Grid.Column="1">
+                  Grid.Column="1"
+                  Grid.Row="1">
             <ComboBox.Resources>
                 <Style TargetType="ComboBox">
                     <Style.Triggers>
@@ -35,16 +47,6 @@
                 </Style>
             </ComboBox.Resources>
         </ComboBox>
-        <Label Grid.Column="0" Content="Board:" HorizontalAlignment="Right" Margin="0,-2,0,0" VerticalAlignment="Top" />
-        <ComboBox ItemsSource="{Binding Countries}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{Binding Icon}" RenderOptions.BitmapScalingMode="NearestNeighbor" Margin="0,0,4,0"/>
-                        <TextBlock Text="{Binding Name}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+        <Label Grid.Column="0" Grid.Row="1" Content="Board:" HorizontalAlignment="Right" Margin="0,-2,0,0" VerticalAlignment="Top" />
     </Grid>
 </Window>
