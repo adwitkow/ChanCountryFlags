@@ -37,7 +37,7 @@ namespace ChanCountryFlags
 
             var catalogJson = System.IO.File.ReadAllText("Resources/catalog.json");
             var catalog = JsonConvert.DeserializeObject<CatalogPage[]>(catalogJson, CatalogConverter.Settings);
-            
+
             DataContext = this;
         }
     }

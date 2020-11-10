@@ -1,14 +1,17 @@
 ﻿using SixLabors.ImageSharp;
+using System.Drawing;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace ChanCountryFlags.Model
 {
     public class Country
     {
-        public Image Icon { get; set; }
+        public ImageSource Icon { get; set; }
         public string Code { get; }
         public string Name { get; }
 
-        public Country(Image icon, string code, string name)
+        public Country(ImageSource icon, string code, string name)
         {
             this.Icon = icon;
             this.Code = code;

@@ -1,4 +1,5 @@
-﻿using ChanCountryFlags.Model;
+﻿using ChanCountryFlags.Helpers;
+using ChanCountryFlags.Model;
 using Newtonsoft.Json;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
@@ -15,6 +16,12 @@ namespace ChanCountryFlags
         public static IEnumerable<Country> GetAllCountries()
         {
             return CodeToCountryMap.Values;
+        }
+
+        public static Country GetCountry(string countryCode)
+        {
+            CodeToCountryMap.TryGetValue(countryCode, out var result);
+            return result;
         }
 
         private static Dictionary<string, Country> SeedCountries()
@@ -50,8 +57,9 @@ namespace ChanCountryFlags
                     }
 
                     var image = flagsImage.Clone(action => action.Crop(new Rectangle(offsetX, offsetY, flagWidth, flagHeight)));
+                    var bitmap = image.ToBitmap();
 
-                    results.Add(code, new Country(image, code, fullName));
+                    results.Add(code, new Country(bitmap.ToImageSource(), code, fullName));
                 }
             }
 
