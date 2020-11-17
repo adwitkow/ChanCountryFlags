@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="ChanCountryFlags.View.Post"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ChanCountryFlags.View"
+             mc:Ignorable="d" >
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="TextAlignment" Value="Justify" />
+            <Setter Property="FontFamily" Value="Helvetica"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="#CCC"/>
+        </Style>
+
+        <Style BasedOn="{StaticResource {x:Type TextBlock}}"
+           TargetType="TextBlock"
+           x:Key="TitleText">
+            <Setter Property="Padding" Value="6,2,2,2"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Background="#121212" MaxWidth="800">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MaxWidth="128" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <!-- Man, I hate WPF. I wish I could just wrap some text around an image and still be able to bind it. I have to use columns instead like a caveman. -->
+        <Border Margin="4" VerticalAlignment="Top" BorderBrush="#222" BorderThickness="1">
+            <Image Source="../Resources/flags.png" />
+        </Border>
+        <StackPanel Grid.Column="1">
+            <Border Padding="4,6,4,0" BorderThickness="0,0,0,1" BorderBrush="#2F2F2F">
+                <WrapPanel>
+                    <TextBlock Foreground="#FFB294BB" Style="{StaticResource TitleText}" FontWeight="Bold">The subject line that appears to actually be quite long my dear friend</TextBlock>
+                    <TextBlock Style="{StaticResource TitleText}" FontWeight="Bold">Name</TextBlock>
+                    <TextBlock Style="{StaticResource TitleText}" >
+                        (ID:
+                        <Border Padding="2" Background="LimeGreen" CornerRadius="4" Margin="-2,-8,-2,-4">
+                            <TextBlock>ZuShZ7jz</TextBlock>
+                        </Border>
+                        )
+                    </TextBlock>
+                    <Image Margin="4,-4,-2,-2" Height="22" Width="32" Source="../Resources/flags.png" />
+                    <TextBlock Style="{StaticResource TitleText}">11/17/20(Tue)20:29:00</TextBlock>
+                    <TextBlock Style="{StaticResource TitleText}">No.124205675</TextBlock>
+                </WrapPanel>
+            </Border>
+            <TextBlock Padding="8,4,8,12">
+             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit, massa et rutrum euismod, elit justo ultricies justo, vitae tincidunt ante tortor at urna. Aliquam laoreet tincidunt risus, ac pharetra dui tincidunt nec. Nullam eu nulla id ipsum commodo ullamcorper. Nullam aliquet mauris finibus turpis facilisis commodo. Nulla neque dui, placerat nec dictum vel, finibus a nisl. Praesent fringilla, ex ac laoreet molestie, diam elit interdum nibh, in maximus ex neque quis neque. Pellentesque interdum aliquam vulputate. Proin eu sem sed felis vestibulum finibus in tincidunt nibh. Nam gravida mauris nec fermentum cursus. Sed sed eleifend nunc. Praesent id auctor ligula. Phasellus consectetur justo vitae sem porta, ac gravida leo elementum. Mauris ullamcorper ante nibh, vel rhoncus nisi pharetra a. Phasellus porta urna eget fermentum lacinia.
+            <LineBreak /><LineBreak />
+             Aliquam dapibus, nulla in dignissim laoreet, dui justo ultricies eros, vel venenatis orci nunc et metus. Suspendisse vestibulum gravida semper. Fusce lobortis dui eu libero molestie lobortis. In hac habitasse platea dictumst. Cras accumsan, est ac interdum auctor, risus eros facilisis purus, a bibendum neque risus vel urna. Suspendisse cursus ante sed fringilla fringilla. Curabitur velit urna, commodo sed mollis vitae, imperdiet euismod nisl. Nullam vel nulla in leo mattis congue. In hac habitasse platea dictumst. Cras venenatis mauris sit amet nisl gravida, in molestie augue iaculis. Praesent eu lacinia lorem, non imperdiet dui. Vivamus vel velit maximus, ultricies mi ut, tempus lectus. Phasellus consequat lorem tempus pellentesque scelerisque.
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>
