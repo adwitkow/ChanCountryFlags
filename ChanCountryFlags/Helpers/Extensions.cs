@@ -39,5 +39,12 @@ namespace ChanCountryFlags.Helpers
                 return new Bitmap(memoryStream);
             }
         }
+
+        public static DateTime ConvertToLocal(this DateTime dateTime, string zoneId)
+        {
+            TimeZoneInfo esZone = TimeZoneInfo.FindSystemTimeZoneById(zoneId); // "Eastern Standard Time"
+
+            return TimeZoneInfo.ConvertTime(dateTime, esZone, TimeZoneInfo.Local);
+        }
     }
 }

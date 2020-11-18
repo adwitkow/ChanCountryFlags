@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using ChanCountryFlags.Helpers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Media;
 
 namespace ChanCountryFlags.Model
 {
@@ -13,6 +15,11 @@ namespace ChanCountryFlags.Model
 
     public partial class Post
     {
+        public string FileUrl { get => $"{Filename}.{Ext}"; }
+        public ImageSource Flag { get => CountryCache.GetCountry(Country).Icon; }
+        public string FormattedBody { get => Body; }
+        public DateTime LocalTimestamp { get => TimeStamp.ConvertToLocal("Eastern Standard Time"); }
+
         [JsonProperty("no")]
         public int No { get; set; }
 
@@ -23,7 +30,7 @@ namespace ChanCountryFlags.Model
         public string Name { get; set; }
 
         [JsonProperty("sub", NullValueHandling = NullValueHandling.Ignore)]
-        public string Sub { get; set; }
+        public string Subject { get; set; }
 
         [JsonProperty("com", NullValueHandling = NullValueHandling.Ignore)]
         public string Body { get; set; }
