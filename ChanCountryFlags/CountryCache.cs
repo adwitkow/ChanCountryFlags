@@ -20,7 +20,18 @@ namespace ChanCountryFlags
 
         public static Country GetCountry(string countryCode)
         {
-            CodeToCountryMap.TryGetValue(countryCode, out var result);
+            if (string.IsNullOrEmpty(countryCode))
+            {
+                countryCode = "XX";
+            }
+
+            var success = CodeToCountryMap.TryGetValue(countryCode, out var result);
+
+            if (!success)
+            {
+                result = GetCountry("XX");
+            }
+
             return result;
         }
 
