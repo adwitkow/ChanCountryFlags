@@ -11,10 +11,10 @@ namespace ChanCountryFlags.Model
         public int Page { get; set; }
 
         [JsonProperty("threads")]
-        public Thread[] Threads { get; set; }
+        public CatalogThread[] Threads { get; set; }
     }
 
-    public partial class Thread
+    public partial class CatalogThread
     {
         [JsonProperty("no")]
         public int No { get; set; }
@@ -41,7 +41,7 @@ namespace ChanCountryFlags.Model
         public string Filename { get; set; }
 
         [JsonProperty("ext", NullValueHandling = NullValueHandling.Ignore)]
-        public Ext? Ext { get; set; }
+        public string Extension { get; set; }
 
         [JsonProperty("w", NullValueHandling = NullValueHandling.Ignore)]
         public int? Width { get; set; }
@@ -92,67 +92,13 @@ namespace ChanCountryFlags.Model
         public bool Filedeleted { get; set; }
     }
 
-    public enum Ext { Gif, Jpg, Png, Webm };
-
     internal static class CatalogConverter
     {
         public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
         {
             DateFormatString = "MM/dd/yy(ddd)HH:mm:ss",
             MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
-            Converters = { ExtConverter.Singleton },
+            DateParseHandling = DateParseHandling.None
         };
-    }
-
-    internal class ExtConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(Ext) || t == typeof(Ext?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
-            switch (value)
-            {
-                case ".gif":
-                    return Ext.Gif;
-                case ".jpg":
-                    return Ext.Jpg;
-                case ".png":
-                    return Ext.Png;
-                case ".webm":
-                    return Ext.Webm;
-            }
-            throw new Exception("Cannot unmarshal type Ext");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (Ext)untypedValue;
-            switch (value)
-            {
-                case Ext.Gif:
-                    serializer.Serialize(writer, ".gif");
-                    return;
-                case Ext.Jpg:
-                    serializer.Serialize(writer, ".jpg");
-                    return;
-                case Ext.Png:
-                    serializer.Serialize(writer, ".png");
-                    return;
-                case Ext.Webm:
-                    serializer.Serialize(writer, ".webm");
-                    return;
-            }
-            throw new Exception("Cannot marshal type Ext");
-        }
-
-        public static readonly ExtConverter Singleton = new ExtConverter();
     }
 }

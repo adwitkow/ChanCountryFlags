@@ -16,9 +16,10 @@ namespace ChanCountryFlags.View
     /// <summary>
     /// Interaction logic for Post.xaml
     /// </summary>
-    public partial class Post : UserControl
+    public partial class PostView : UserControl
     {
-        public Post()
+
+        public PostView()
         {
             InitializeComponent();
         }
