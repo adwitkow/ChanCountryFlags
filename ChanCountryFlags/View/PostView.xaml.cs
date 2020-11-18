@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChanCountryFlags.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,10 +19,13 @@ namespace ChanCountryFlags.View
     /// </summary>
     public partial class PostView : UserControl
     {
+        public Post Post { get; set; }
 
         public PostView()
         {
             InitializeComponent();
+
+            DataContext = this;
         }
     }
 }

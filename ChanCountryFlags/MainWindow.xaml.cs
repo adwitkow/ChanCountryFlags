@@ -41,6 +41,8 @@ namespace ChanCountryFlags
             var threadJson = System.IO.File.ReadAllText("Resources/thread.json");
             var thread = JsonConvert.DeserializeObject<Thread>(threadJson, ThreadConverter.Settings);
 
+            TestPost.Post = thread.Posts.First();
+
             DataContext = this;
         }
     }
