@@ -19,13 +19,9 @@ namespace ChanCountryFlags.View
     /// </summary>
     public partial class PostView : UserControl
     {
-        public Post Post { get; set; }
-
         public PostView()
         {
             InitializeComponent();
-
-            DataContext = this;
         }
     }
 }

@@ -24,6 +24,7 @@ namespace ChanCountryFlags
     {
         public IEnumerable<Board> FlagBoards { get; private set; }
         public IEnumerable<Country> Countries { get; private set; }
+        public IEnumerable<Post> Posts { get; private set; }
 
         public MainWindow()
         {
@@ -41,7 +42,7 @@ namespace ChanCountryFlags
             var threadJson = System.IO.File.ReadAllText("Resources/thread.json");
             var thread = JsonConvert.DeserializeObject<Thread>(threadJson, ThreadConverter.Settings);
 
-            TestPost.Post = thread.Posts.First();
+            Posts = thread.Posts;
 
             DataContext = this;
         }

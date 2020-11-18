@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ChanCountryFlags.View"
              mc:Ignorable="d" >
     <UserControl.Resources>
         <Style TargetType="TextBlock">
@@ -28,26 +27,26 @@
         </Grid.ColumnDefinitions>
         <!-- Man, I hate WPF. I wish I could just wrap some text around an image and still be able to bind it. I have to use columns instead like a caveman. -->
         <Border Margin="4" VerticalAlignment="Top" BorderBrush="#222" BorderThickness="1">
-            <Image Source="../Resources/flags.png" />
+            <Image  />
         </Border>
         <StackPanel Grid.Column="1">
             <Border Padding="4,6,4,0" BorderThickness="0,0,0,1" BorderBrush="#2F2F2F">
                 <WrapPanel>
-                    <TextBlock Foreground="#FFB294BB" Style="{StaticResource TitleText}" Text="{Binding Post.Subject, FallbackValue=Subject}" FontWeight="Bold" />
-                    <TextBlock Style="{StaticResource TitleText}" Text="{Binding Post.Name, FallbackValue=Name}" FontWeight="Bold" />
+                    <TextBlock Foreground="#FFB294BB" Style="{StaticResource TitleText}" Text="{Binding Subject, FallbackValue=Subject}" FontWeight="Bold" />
+                    <TextBlock Style="{StaticResource TitleText}" Text="{Binding Name, FallbackValue=Name}" FontWeight="Bold" />
                     <TextBlock Style="{StaticResource TitleText}" >
                         (ID:
                         <Border Padding="2" Background="LimeGreen" CornerRadius="4" Margin="-2,-8,-2,-4">
-                            <TextBlock Text="{Binding Post.Id, FallbackValue=ZuShZ7jz}" />
+                            <TextBlock Text="{Binding Id, FallbackValue=ZuShZ7jz}" />
                         </Border>
                         )
                     </TextBlock>
-                    <Image Margin="4,-4,-2,-2" Height="22" Width="32" Source="{Binding Post.Flag}" RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                    <TextBlock Style="{StaticResource TitleText}" Text="{Binding Post.LocalTimestamp, FallbackValue=11/17/20(Tue)20:29:00, StringFormat=F}"/>
-                    <TextBlock Style="{StaticResource TitleText}" Text="{Binding Post.No, FallbackValue=124205675, StringFormat=No. {0}}"/>
+                    <Image Margin="4,-4,-2,-2" Height="22" Width="32" Source="{Binding Flag}" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                    <TextBlock Style="{StaticResource TitleText}" Text="{Binding LocalTimestamp, FallbackValue=11/17/20(Tue)20:29:00, StringFormat=F}"/>
+                    <TextBlock Style="{StaticResource TitleText}" Text="{Binding No, FallbackValue=124205675, StringFormat=No. {0}}"/>
                 </WrapPanel>
             </Border>
-            <TextBlock Padding="8,4,8,12" Text="{Binding Post.FormattedBody, FallbackValue=Body body body}" />
+            <TextBlock Padding="8,4,8,12" Text="{Binding FormattedBody, FallbackValue=Body body body}" />
         </StackPanel>
     </Grid>
 </UserControl>
