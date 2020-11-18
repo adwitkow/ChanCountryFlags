@@ -14,16 +14,10 @@ namespace ChanCountryFlags.Model
     public partial class Post
     {
         [JsonProperty("no")]
-        public long No { get; set; }
-
-        [JsonProperty("sticky", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Sticky { get; set; }
-
-        [JsonProperty("closed", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Closed { get; set; }
+        public int No { get; set; }
 
         [JsonProperty("now")]
-        public DateTime Now { get; set; }
+        public DateTime TimeStamp { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -31,56 +25,56 @@ namespace ChanCountryFlags.Model
         [JsonProperty("sub", NullValueHandling = NullValueHandling.Ignore)]
         public string Sub { get; set; }
 
-        [JsonProperty("com")]
-        public string Com { get; set; }
+        [JsonProperty("com", NullValueHandling = NullValueHandling.Ignore)]
+        public string Body { get; set; }
 
-        [JsonProperty("filename")]
+        [JsonProperty("filename", NullValueHandling = NullValueHandling.Ignore)]
         public string Filename { get; set; }
 
-        [JsonProperty("ext")]
+        [JsonProperty("ext", NullValueHandling = NullValueHandling.Ignore)]
         public string Ext { get; set; }
 
-        [JsonProperty("w")]
-        public long W { get; set; }
+        [JsonProperty("w", NullValueHandling = NullValueHandling.Ignore)]
+        public int? Width { get; set; }
 
-        [JsonProperty("h")]
-        public long H { get; set; }
+        [JsonProperty("h", NullValueHandling = NullValueHandling.Ignore)]
+        public int? Height { get; set; }
 
-        [JsonProperty("tn_w")]
-        public long TnW { get; set; }
+        [JsonProperty("tn_w", NullValueHandling = NullValueHandling.Ignore)]
+        public int? ThumbnailWidth { get; set; }
 
-        [JsonProperty("tn_h")]
-        public long TnH { get; set; }
-
-        [JsonProperty("tim")]
-        public long Tim { get; set; }
+        [JsonProperty("tn_h", NullValueHandling = NullValueHandling.Ignore)]
+        public int? ThumbnailHeight { get; set; }
 
         [JsonProperty("time")]
-        public long Time { get; set; }
+        public string UnixTime { get; set; }
 
-        [JsonProperty("md5")]
-        public string Md5 { get; set; }
+        [JsonProperty("fsize", NullValueHandling = NullValueHandling.Ignore)]
+        public int? FileSize { get; set; }
 
-        [JsonProperty("fsize")]
-        public long Fsize { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
 
-        [JsonProperty("resto")]
-        public long Resto { get; set; }
+        [JsonProperty("country", NullValueHandling = NullValueHandling.Ignore)]
+        public string Country { get; set; }
 
-        [JsonProperty("capcode")]
-        public string Capcode { get; set; }
-
-        [JsonProperty("semantic_url", NullValueHandling = NullValueHandling.Ignore)]
-        public string SemanticUrl { get; set; }
+        [JsonProperty("country_name")]
+        public string CountryName { get; set; }
 
         [JsonProperty("replies", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Replies { get; set; }
+        public int Replies { get; set; }
 
         [JsonProperty("images", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Images { get; set; }
+        public int Images { get; set; }
 
-        [JsonProperty("unique_ips", NullValueHandling = NullValueHandling.Ignore)]
-        public long? UniqueIps { get; set; }
+        [JsonProperty("troll_country", NullValueHandling = NullValueHandling.Ignore)]
+        public string TrollCountry { get; set; }
+
+        [JsonProperty("trip", NullValueHandling = NullValueHandling.Ignore)]
+        public string Trip { get; set; }
+
+        [JsonProperty("filedeleted", NullValueHandling = NullValueHandling.Include)]
+        public bool Filedeleted { get; set; }
     }
 
     internal static class ThreadConverter
