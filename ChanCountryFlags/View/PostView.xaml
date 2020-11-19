@@ -20,7 +20,7 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid Background="#121212" MaxWidth="800">
+    <Grid Background="#121212">
         <Grid.ColumnDefinitions>
             <ColumnDefinition MaxWidth="128" />
             <ColumnDefinition Width="1*" />
@@ -30,22 +30,21 @@
             <Image  />
         </Border>
         <StackPanel Grid.Column="1">
-            <Border Padding="4,6,4,0" BorderThickness="0,0,0,1" BorderBrush="#2F2F2F">
-                <WrapPanel>
-                    <TextBlock Foreground="#FFB294BB" Style="{StaticResource TitleText}" Text="{Binding Subject, FallbackValue=Subject}" FontWeight="Bold" />
-                    <TextBlock Style="{StaticResource TitleText}" Text="{Binding Name, FallbackValue=Name}" FontWeight="Bold" />
-                    <TextBlock Style="{StaticResource TitleText}" >
+            <WrapPanel>
+                <TextBlock Foreground="#FFB294BB" Style="{StaticResource TitleText}" Text="{Binding Subject, FallbackValue=Subject}" FontWeight="Bold" />
+                <TextBlock Style="{StaticResource TitleText}" Text="{Binding Name, FallbackValue=Name}" FontWeight="Bold" />
+                <TextBlock Style="{StaticResource TitleText}" >
                         (ID:
                         <Border Padding="2" Background="LimeGreen" CornerRadius="4" Margin="-2,-8,-2,-4">
                             <TextBlock Text="{Binding Id, FallbackValue=ZuShZ7jz}" />
                         </Border>
                         )
                     </TextBlock>
-                    <Image Margin="4,-4,-2,-2" Height="22" Width="32" Source="{Binding Flag}" RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                    <TextBlock Style="{StaticResource TitleText}" Text="{Binding LocalTimestamp, FallbackValue=11/17/20(Tue)20:29:00, StringFormat=F}"/>
-                    <TextBlock Style="{StaticResource TitleText}" Text="{Binding No, FallbackValue=124205675, StringFormat=No. {0}}"/>
-                </WrapPanel>
-            </Border>
+                <Image Margin="4,-4,-2,-2" Height="22" Width="32" Source="{Binding Flag}" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                <TextBlock Style="{StaticResource TitleText}" Text="{Binding LocalTimestamp, FallbackValue=11/17/20(Tue)20:29:00, StringFormat=F}"/>
+                <TextBlock Style="{StaticResource TitleText}" Text="{Binding No, FallbackValue=124205675, StringFormat=No. {0}}"/>
+            </WrapPanel>
+            <Separator BorderThickness="1" BorderBrush="#2F2F2F"/>
             <TextBlock Padding="8,4,8,12" Text="{Binding FormattedBody, FallbackValue=Body body body}" />
         </StackPanel>
     </Grid>
